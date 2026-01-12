@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamPro - Online Examination System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>ExamPro</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="home-link"><i class="fas fa-home"></i> Home</a>
+                <a href="#" id="exams-link"><i class="fas fa-file-alt"></i> Exams</a>
+                <a href="#" id="results-link"><i class="fas fa-chart-bar"></i> Results</a>
+                <a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a>
+                <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container" id="main-content">
+        <!-- Login/Register will load here initially -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 ExamPro. All rights reserved.</p>
+            <p>Online Examination System v1.0</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="exam.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+style.css:
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.logo i {
+    font-size: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links a:hover {
+    color: #4f46e5;
+}
+
+.btn-logout {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-logout:hover {
+    background: #dc2626;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    flex: 1;
+}
+
+/* Authentication Forms */
+.auth-container {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: #4f46e5;
+    border-bottom: 3px solid #4f46e5;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+/* Dashboard */
+.dashboard {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 15px;
+}
+
+.welcome-section h1 {
+    color: #1e293b;
+    margin-bottom: 1rem;
+}
+
+.welcome-section p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #4f46e5;
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* Exams List */
+.exams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.exam-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s;
+}
+
+.exam-card:hover {
+    transform: translateY(-5px);
+    border-color: #4f46e5;
+}
+
+.exam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.exam-title {
+    font-size: 1.3rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.exam-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-completed {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.exam-details {
+    margin-bottom: 1.5rem;
+}
+
+.exam-details p {
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exam-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-start {
+    flex: 1;
+    padding: 0.75rem;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-start:hover {
+    background: #4338ca;
+}
+
+.btn-view {
+    flex: 1;
+    padding: 0.75rem;
+    background: #f3f4f6;
+    color: #374151;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.btn-view:hover {
+    background: #e5e7eb;
+}
+
+/* Exam Taking Interface */
+.exam-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.exam-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1.5rem;
+    background: #fef3c7;
+    border-radius: 10px;
+    color: #92400e;
+    font-weight: 600;
+}
+
+.timer.warning {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.question-counter {
+    font-size: 1.1rem;
+    color: #64748b;
+}
+
+.question-container {
+    margin-bottom: 2rem;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option {
+    padding: 1rem 1.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.option:hover {
+    border-color: #c7d2fe;
+    background: #f5f7ff;
+}
+
+.option.selected {
+    border-color: #4f46e5;
+    background: #eef2ff;
+}
+
+.option-letter {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4f46e5;
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-prev, .btn-next, .btn-submit {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-prev {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-prev:hover {
+    background: #e5e7eb;
+}
+
+.btn-next {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-next:hover {
+    background: #4338ca;
+}
+
+.btn-submit {
+    background: #10b981;
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #059669;
+}
+
+.question-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #e5e7eb;
+}
+
+.question-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.question-nav-btn.answered {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.question-nav-btn.current {
+    background: #4f46e5;
+    color: white;
+    border-color: #4f46e5;
+}
+
+/* Results Page */
+.result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    position: relative;
+}
+
+.score-circle::after {
+    content: '%';
+    font-size: 1.5rem;
+    position: absolute;
+    right: 30px;
+}
+
+.result-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    text-align: center;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.detail-item h4 {
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.detail-item p {
+    color: #1e293b;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 0;
+    margin-top: auto;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    color: #64748b;
+}
+
+.footer-content p {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .auth-container {
+        padding: 2rem 1rem;
+    }
+    
+    .dashboard {
+        padding: 1rem;
+    }
+    
+    .exam-header-bar {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-prev, .btn-next, .btn-submit {
+        width: 100%;
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.text-success {
+    color: #10b981;
+}
+
+.text-danger {
+    color: #ef4444;
+}
+
+.text-warning {
+    color: #f59e0b;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #64748b;
+}
+
+.loading i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+}
+auth.js:
+// Authentication System
+class AuthSystem {
+    constructor() {
+        this.currentUser = null;
+        this.init();
+    }
+
+    init() {
+        // Check if user is already logged in
+        const userData = localStorage.getItem('examUser');
+        if (userData) {
+            this.currentUser = JSON.parse(userData);
+            this.updateUI();
+        } else {
+            this.showLoginForm();
+        }
+    }
+
+    showLoginForm() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" id="login-tab">Login</button>
+                    <button class="tab-btn" id="register-tab">Register</button>
+                </div>
+                
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-role">I am a</label>
+                        <select id="register-role" class="form-control">
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+            </div>
+        `;
+
+        this.setupAuthListeners();
+    }
+
+    setupAuthListeners() {
+        // Tab switching
+        document.getElementById('login-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('login-tab').classList.add('active');
+            document.getElementById('register-tab').classList.remove('active');
+            document.getElementById('login-form').classList.add('active');
+            document.getElementById('register-form').classList.remove('active');
+        });
+
+        document.getElementById('register-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('register-tab').classList.add('active');
+            document.getElementById('login-tab').classList.remove('active');
+            document.getElementById('register-form').classList.add('active');
+            document.getElementById('login-form').classList.remove('active');
+        });
+
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.login();
+        });
+
+        // Register form
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.register();
+        });
+    }
+
+    login() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        // Simple validation
+        if (!email || !password) {
+            this.showAlert('Please fill in all fields', 'error');
+            return;
+        }
+
+        // Mock authentication (in real app, this would be a server call)
+        const users = JSON.parse(localStorage.getItem('examUsers') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            this.currentUser = user;
+            localStorage.setItem('examUser', JSON.stringify(user));
+            this.showAlert('Login successful!', 'success');
+            setTimeout(() => {
+                this.updateUI();
+                this.showDashboard();
+            }, 1000);
+        } else {
+            this.showAlert('Invalid email or password', 'error');
+        }
+    }
+
+    register() {
+        const name = document.getElementById('register-name').value;
+        const email = document.getElementById('register-email').value;
+        const password = document.getElementById('register-password').value;
+        const role = document.getElementById('register-role').value;
+
+        if (!name || !email || !password) {
+            this.showAlert('Please fill in all fields', 'error');
+            return;
+        }
+
+        // Check if user already exists
+        const users = JSON.parse(localStorage.getItem('examUsers') || '[]');
+        if (users.some(u => u.email === email)) {
+            this.showAlert('User already exists with this email', 'error');
+            return;
+        }
+
+        // Create new user
+        const newUser = {
+            id: Date.now(),
+            name,
+            email,
+            password,
+            role,
+            createdAt: new Date().toISOString()
+        };
+
+        users.push(newUser);
+        localStorage.setItem('examUsers', JSON.stringify(users));
+
+        // Auto login after registration
+        this.currentUser = newUser;
+        localStorage.setItem('examUser', JSON.stringify(newUser));
+
+        this.showAlert('Registration successful!', 'success');
+        setTimeout(() => {
+            this.updateUI();
+            this.showDashboard();
+        }, 1000);
+    }
+
+    logout() {
+        this.currentUser = null;
+        localStorage.removeItem('examUser');
+        this.updateUI();
+        this.showLoginForm();
+    }
+
+    updateUI() {
+        const navLinks = document.querySelector('.nav-links');
+        if (this.currentUser) {
+            navLinks.classList.remove('hidden');
+            document.getElementById('logout-btn').classList.remove('hidden');
+        } else {
+            navLinks.classList.add('hidden');
+            document.getElementById('logout-btn').classList.add('hidden');
+        }
+    }
+
+    showAlert(message, type) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type}`;
+        alertDiv.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            ${message}
+        `;
+
+        const container = document.querySelector('.auth-container') || document.querySelector('.dashboard');
+        if (container) {
+            container.insertBefore(alertDiv, container.firstChild);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+    }
+
+    showDashboard() {
+        const examSystem = new ExamSystem(this.currentUser);
+        examSystem.showDashboard();
+    }
+}
+exam.js:
+// Exam System
+class ExamSystem {
+    constructor(user) {
+        this.currentUser = user;
+        this.currentExam = null;
+        this.currentQuestion = 0;
+        this.userAnswers = [];
+        this.examStartTime = null;
+        this.examTimer = null;
+        this.timeLeft = null;
+        
+        this.init();
+    }
+
+    init() {
+        this.setupNavigation();
+        this.loadMockData();
+    }
+
+    setupNavigation() {
+        // Navigation event listeners
+        document.getElementById('home-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showDashboard();
+        });
+
+        document.getElementById('exams-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showExamsList();
+        });
+
+        document.getElementById('results-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showResults();
+        });
+
+        document.getElementById('profile-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showProfile();
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            authSystem.logout();
+        });
+    }
+
+    loadMockData() {
+        // If no exams in localStorage, create sample data
+        if (!localStorage.getItem('examExams')) {
+            const sampleExams = [
+                {
+                    id: 1,
+                    title: "JavaScript Fundamentals",
+                    description: "Test your knowledge of basic JavaScript concepts",
+                    instructor: "John Doe",
+                    duration: 30, // minutes
+                    totalQuestions: 10,
+                    passingScore: 70,
+                    questions: [
+                        {
+                            id: 1,
+                            text: "Which of the following is NOT a JavaScript data type?",
+                            options: [
+                                "String",
+                                "Boolean",
+                                "Float",
+                                "Number"
+                            ],
+                            correctAnswer: 2
+                        },
+                        {
+                            id: 2,
+                            text: "What does DOM stand for?",
+                            options: [
+                                "Document Object Model",
+                                "Data Object Model",
+                                "Digital Object Management",
+                                "Document Orientation Method"
+                            ],
+                            correctAnswer: 0
+                        },
+                        {
+                            id: 3,
+                            text: "Which method is used to parse a JSON string?",
+                            options: [
+                                "JSON.parse()",
+                                "JSON.stringify()",
+                                "JSON.decode()",
+                                "JSON.read()"
+                            ],
+                            correctAnswer: 0
+                        },
+                        {
+                            id: 4,
+                            text: "What will 'typeof null' return?",
+                            options: [
+                                "null",
+                                "undefined",
+                                "object",
+                                "number"
+                            ],
+                            correctAnswer: 2
+                        },
+                        {
+                            id: 5,
+                            text: "Which keyword is used to declare a constant in ES6?",
+                            options: [
+                                "let",
+                                "var",
+                                "const",
+                                "constant"
+                            ],
+                            correctAnswer: 2
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Web Development Basics",
+                    description: "HTML, CSS, and JavaScript fundamentals",
+                    instructor: "Jane Smith",
+                    duration: 45,
+                    totalQuestions: 15,
+                    passingScore: 65,
+                    questions: [
+                        {
+                            id: 1,
+                            text: "What does HTML stand for?",
+                            options: [
+                                "Hyper Text Markup Language",
+                                "High Tech Modern Language",
+                                "Hyper Transfer Markup Language",
+                                "Home Tool Markup Language"
+                            ],
+                            correctAnswer: 0
+                        },
+                        {
+                            id: 2,
+                            text: "Which CSS property controls text size?",
+                            options: [
+                                "text-size",
+                                "font-size",
+                                "text-style",
+                                "font-weight"
+                            ],
+                            correctAnswer: 1
+                        },
+                        {
+                            id: 3,
+                            text: "Which tag is used for the largest heading?",
+                            options: [
+                                "<h6>",
+                                "<heading>",
+                                "<h1>",
+                                "<head>"
+                            ],
+                            correctAnswer: 2
+                        }
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "Node.js Essentials",
+                    description: "Test your Node.js and backend knowledge",
+                    instructor: "Mike Johnson",
+                    duration: 60,
+                    totalQuestions: 20,
+                    passingScore: 75,
+                    questions: [
+                        {
+                            id: 1,
+                            text: "What is Node.js primarily used for?",
+                            options: [
+                                "Frontend development",
+                                "Backend development",
+                                "Database management",
+                                "Mobile app development"
+                            ],
+                            correctAnswer: 1
+                        },
+                        {
+                            id: 2,
+                            text: "Which module is built into Node.js for file operations?",
+                            options: [
+                                "http",
+                                "fs",
+                                "path",
+                                "os"
+                            ],
+                            correctAnswer: 1
+                        }
+                    ]
+                }
+            ];
+            localStorage.setItem('examExams', JSON.stringify(sampleExams));
+        }
+
+        // If no results in localStorage, create empty array
+        if (!localStorage.getItem('examResults')) {
+            localStorage.setItem('examResults', JSON.stringify([]));
+        }
+    }
+
+    showDashboard() {
+        const exams = JSON.parse(localStorage.getItem('examExams') || '[]');
+        const results = JSON.parse(localStorage.getItem('examResults') || '[]');
+        const userResults = results.filter(r => r.userId === this.currentUser.id);
+
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="dashboard">
+                <div class="welcome-section">
+                    <h1>Welcome back, ${this.currentUser.name}!</h1>
+                    <p>Ready to test your knowledge? Take an exam or check your results.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>${exams.length}</h3>
+                        <p>Available Exams</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>${userResults.length}</h3>
+                        <p>Exams Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>${this.calculateAverageScore(userResults)}%</h3>
+                        <p>Average Score</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>${this.getHighestScore(userResults)}%</h3>
+                        <p>Highest Score</p>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="exams-grid">
+                        ${exams.slice(0, 3).map(exam => `
+                            <div class="exam-card">
+                                <div class="exam-header">
+                                    <h3 class="exam-title">${exam.title}</h3>
+                                    <span class="exam-status status-active">Available</span>
+                                </div>
+                                <div class="exam-details">
+                                    <p><i class="fas fa-user"></i> ${exam.instructor}</p>
+                                    <p><i class="fas fa-clock"></i> ${exam.duration} minutes</p>
+                                    <p><i class="fas fa-question-circle"></i> ${exam.questions.length} questions</p>
+                                </div>
+                                <div class="exam-actions">
+                                    <button class="btn-start" onclick="examSystem.startExam(${exam.id})">
+                                        Start Exam
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    showExamsList() {
+        const exams = JSON.parse(localStorage.getItem('examExams') || '[]');
+        const results = JSON.parse(localStorage.getItem('examResults') || '[]');
+        
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="dashboard">
+                <h1>Available Exams</h1>
+                <p>Select an exam to begin your test</p>
+                
+                <div class="exams-grid">
+                    ${exams.map(exam => {
+                        const userResult = results.find(r => 
+                            r.examId === exam.id && r.userId === this.currentUser.id
+                        );
+                        const status = userResult ? 'completed' : 'active';
+                        const statusText = userResult ? 'Completed' : 'Available';
+                        
+                        return `
+                            <div class="exam-card">
+                                <div class="exam-header">
+                                    <h3 class="exam-title">${exam.title}</h3>
+                                    <span class="exam-status status-${status}">${statusText}</span>
+                                </div>
+                                <div class="exam-details">
+                                    <p><i class="fas fa-user"></i> Instructor: ${exam.instructor}</p>
+                                    <p><i class="fas fa-clock"></i> Duration: ${exam.duration} minutes</p>
+                                    <p><i class="fas fa-question-circle"></i> Questions: ${exam.questions.length}</p>
+                                    <p><i class="fas fa-percentage"></i> Passing: ${exam.passingScore}%</p>
+                                </div>
+                                <div class="exam-actions">
+                                    ${userResult ? `
+                                        <button class="btn-view" onclick="examSystem.showResult(${userResult.id})">
+                                            View Result
+                                        </button>
+                                    ` : `
+                                        <button class="btn-start" onclick="examSystem.startExam(${exam.id})">
+                                            Start Exam
+                                        </button>
+                                    `}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    startExam(examId) {
+        const exams = JSON.parse(localStorage.getItem('examExams') || '[]');
+        this.currentExam = exams.find(e => e.id === examId);
+        
+        if (!this.currentExam) {
+            alert('Exam not found!');
+            return;
+        }
+
+        // Initialize user answers
+        this.userAnswers = new Array(this.currentExam.questions.length).fill(null);
+        this.currentQuestion = 0;
+        this.examStartTime = new Date();
+        this.timeLeft = this.currentExam.duration * 60; // Convert to seconds
+
+        this.showExamInterface();
+        this.startTimer();
+    }
+
+    showExamInterface() {
+        const exam = this.currentExam;
+        const currentQ = exam.questions[this.currentQuestion];
+        const isLastQuestion = this.currentQuestion === exam.questions.length - 1;
+
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="exam-container">
+                <div class="exam-header-bar">
+                    <h2>${exam.title}</h2>
+                    <div class="timer" id="exam-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="time-display">${this.formatTime(this.timeLeft)}</span>
+                    </div>
+                    <div class="question-counter">
+                        Question ${this.currentQuestion + 1} of ${exam.questions.length}
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h3 class="question-text">${currentQ.text}</h3>
+                    <div class="options-container">
+                        ${currentQ.options.map((option, index) => `
+                            <div class="option ${this.userAnswers[this.currentQuestion] === index ? 'selected' : ''}" 
+                                 onclick="examSystem.selectAnswer(${index})">
+                                <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                                <div class="option-text">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn-prev" ${this.currentQuestion === 0 ? 'disabled' : ''} 
+                            onclick="examSystem.prevQuestion()">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    
+                    <div>
+                        ${isLastQuestion ? `
+                            <button class="btn-submit" onclick="examSystem.submitExam()">
+                                Submit Exam <i class="fas fa-paper-plane"></i>
+                            </button>
+                        ` : `
+                            <button class="btn-next" onclick="examSystem.nextQuestion()">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        `}
+                    </div>
+                </div>
+
+                <div class="question-navigation">
+                    ${exam.questions.map((_, index) => `
+                        <button class="question-nav-btn 
+                                    ${this.userAnswers[index] !== null ? 'answered' : ''}
+                                    ${index === this.currentQuestion ? 'current' : ''}"
+                                onclick="examSystem.goToQuestion(${index})">
+                            ${index + 1}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        this.updateTimerDisplay();
+    }
+
+    selectAnswer(answerIndex) {
+        this.userAnswers[this.currentQuestion] = answerIndex;
+        
+        // Update UI
+        const options = document.querySelectorAll('.option');
+        options.forEach((option, index) => {
+            option.classList.toggle('selected', index === answerIndex);
+        });
+
+        // Update navigation button
+        const navBtn = document.querySelector(`.question-nav-btn:nth-child(${this.currentQuestion + 1})`);
+        navBtn.classList.add('answered');
+    }
+
+    nextQuestion() {
+        if (this.currentQuestion < this.currentExam.questions.length - 1) {
+            this.currentQuestion++;
+            this.showExamInterface();
+        }
+    }
+
+    prevQuestion() {
+        if (this.currentQuestion > 0) {
+            this.currentQuestion--;
+            this.showExamInterface();
+        }
+    }
+
+    goToQuestion(index) {
+        this.currentQuestion = index;
+        this.showExamInterface();
+    }
+
+    startTimer() {
+        clearInterval(this.examTimer);
+        
+        this.examTimer = setInterval(() => {
+            this.timeLeft--;
+            this.updateTimerDisplay();
+            
+            if (this.timeLeft <= 0) {
+                clearInterval(this.examTimer);
+                this.submitExam();
+            } else if (this.timeLeft <= 60) {
+                // Last minute warning
+                const timerElement = document.getElementById('exam-timer');
+                if (timerElement) {
+                    timerElement.classList.add('warning');
+                }
+            }
+        }, 1000);
+    }
+
+    updateTimerDisplay() {
+        const timeDisplay = document.getElementById('time-display');
+        if (timeDisplay) {
+            timeDisplay.textContent = this.formatTime(this.timeLeft);
+        }
+    }
+
+    formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    submitExam() {
+        clearInterval(this.examTimer);
+        
+        // Calculate score
+        const exam = this.currentExam;
+        let correctAnswers = 0;
+        
+        exam.questions.forEach((question, index) => {
+            if (this.userAnswers[index] === question.correctAnswer) {
+                correctAnswers++;
+            }
+        });
+        
+        const score = (correctAnswers / exam.questions.length) * 100;
+        const passed = score >= exam.passingScore;
+        const timeTaken = this.currentExam.duration * 60 - this.timeLeft;
+        
+        // Save result
+        const results = JSON.parse(localStorage.getItem('examResults') || '[]');
+        const result = {
+            id: Date.now(),
+            userId: this.currentUser.id,
+            examId: exam.id,
+            examTitle: exam.title,
+            score: score.toFixed(2),
+            correctAnswers,
+            totalQuestions: exam.questions.length,
+            passed,
+            timeTaken: Math.floor(timeTaken / 60), // minutes
+            submittedAt: new Date().toISOString(),
+            answers: this.userAnswers.map((answer, index) => ({
+                questionId: exam.questions[index].id,
+                selectedAnswer: answer,
+                correctAnswer: exam.questions[index].correctAnswer,
+                isCorrect: answer === exam.questions[index].correctAnswer
+            }))
+        };
+        
+        results.push(result);
+        localStorage.setItem('examResults', JSON.stringify(results));
+        
+        this.showResult(result.id);
+    }
+
+    showResult(resultId) {
+        const results = JSON.parse(localStorage.getItem('examResults') || '[]');
+        const result = results.find(r => r.id === resultId);
+        
+        if (!result) {
+            alert('Result not found!');
+            return;
+        }
+
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="result-card">
+                <div class="result-header">
+                    <h1>${result.passed ? '🎉 Congratulations!' : '📝 Exam Result'}</h1>
+                    <p>You have ${result.passed ? 'passed' : 'not passed'} the exam</p>
+                    
+                    <div class="score-circle ${result.passed ? 'text-success' : 'text-danger'}">
+                        ${result.score}
+                    </div>
+                    
+                    <h2>${result.examTitle}</h2>
+                </div>
+                
+                <div class="result-details">
+                    <div class="detail-item">
+                        <h4>Score</h4>
+                        <p class="${result.passed ? 'text-success' : 'text-danger'}">${result.score}%</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Correct Answers</h4>
+                        <p>${result.correctAnswers}/${result.totalQuestions}</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Time Taken</h4>
+                        <p>${result.timeTaken} minutes</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Status</h4>
+                        <p class="${result.passed ? 'text-success' : 'text-danger'}">
+                            ${result.passed ? 'Passed ✅' : 'Failed ❌'}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="question-review">
+                    <h3>Question Review</h3>
+                    ${this.getExamQuestions(result.examId).map((question, index) => {
+                        const userAnswer = result.answers[index];
+                        return `
+                            <div class="question-review-item">
+                                <h4>Q${index + 1}: ${question.text}</h4>
+                                <div class="answers">
+                                    <p><strong>Your Answer:</strong> 
+                                        <span class="${userAnswer.isCorrect ? 'text-success' : 'text-danger'}">
+                                            ${question.options[userAnswer.selectedAnswer] || 'Not answered'}
+                                            ${userAnswer.isCorrect ? ' ✓' : ' ✗'}
+                                        </span>
+                                    </p>
+                                    ${!userAnswer.isCorrect ? `
+                                        <p><strong>Correct Answer:</strong> 
+                                            <span class="text-success">
+                                                ${question.options[question.correctAnswer]}
+                                            </span>
+                                        </p>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                
+                <div class="result-actions">
+                    <button class="btn-primary" onclick="examSystem.showExamsList()">
+                        Back to Exams
+                    </button>
+                    <button class="btn-start" onclick="examSystem.startExam(${result.examId})">
+                        Retake Exam
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    showResults() {
+        const results = JSON.parse(localStorage.getItem('examResults') || '[]');
+        const userResults = results.filter(r => r.userId === this.currentUser.id);
+
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="dashboard">
+                <h1>Your Exam Results</h1>
+                <p>View your performance history</p>
+                
+                ${userResults.length === 0 ? `
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        You haven't taken any exams yet. Start your first exam!
+                    </div>
+                ` : `
+                    <div class="results-list">
+                        ${userResults.map(result => `
+                            <div class="result-item">
+                                <div class="result-header">
+                                    <h3>${result.examTitle}</h3>
+                                    <span class="score ${result.passed ? 'text-success' : 'text-danger'}">
+                                        ${result.score}%
+                                    </span>
+                                </div>
+                                <div class="result-details">
+                                    <p><i class="fas fa-calendar"></i> ${new Date(result.submittedAt).toLocaleDateString()}</p>
+                                    <p><i class="fas fa-clock"></i> ${result.timeTaken} minutes</p>
+                                    <p><i class="fas fa-check-circle"></i> ${result.correctAnswers}/${result.totalQuestions} correct</p>
+                                </div>
+                                <button class="btn-view" onclick="examSystem.showResult(${result.id})">
+                                    View Details
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `}
+            </div>
+        `;
+    }
+
+    showProfile() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <div class="dashboard">
+                <div class="profile-header">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h1>${this.currentUser.name}</h1>
+                    <p class="user-role">
+                        <i class="fas fa-user-tag"></i> 
+                        ${this.currentUser.role.charAt(0).toUpperCase() + this.currentUser.role.slice(1)}
+                    </p>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p>${this.currentUser.email}</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Member Since</h3>
+                        <p>${new Date(this.currentUser.createdAt).toLocaleDateString()}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    calculateAverageScore(results) {
+        if (results.length === 0) return 0;
+        const total = results.reduce((sum, result) => sum + parseFloat(result.score), 0);
+        return (total / results.length).toFixed(1);
+    }
+
+    getHighestScore(results) {
+        if (results.length === 0) return 0;
+        return Math.max(...results.map(r => parseFloat(r.score))).toFixed(1);
+    }
+
+    getExamQuestions(examId) {
+        const exams = JSON.parse(localStorage.getItem('examExams') || '[]');
+        const exam = exams.find(e => e.id === examId);
+        return exam ? exam.questions : [];
+    }
+}
+
+// Initialize auth system
+let authSystem;
+let examSystem;
+
+// Make functions available globally
+window.selectAnswer = (index) => examSystem.selectAnswer(index);
+window.prevQuestion = () => examSystem.prevQuestion();
+window.nextQuestion = () => examSystem.nextQuestion();
+window.goToQuestion = (index) => examSystem.goToQuestion(index);
+window.submitExam = () => examSystem.submitExam();
+script.js:
+// Main Application Initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize authentication system
+    authSystem = new AuthSystem();
+    
+    // Initialize exam system when user is logged in
+    if (authSystem.currentUser) {
+        examSystem = new ExamSystem(authSystem.currentUser);
+        examSystem.showDashboard();
+    }
+});
+
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '1rem';
+                navLinks.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.nav-container')) {
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
+            }
+        }
+    });
+});
+
+// Make examSystem globally accessible
+window.examSystem = examSystem;
+window.authSystem = authSystem;
+db.json:
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Student",
+      "email": "student@example.com",
+      "password": "password123",
+      "role": "student",
+      "createdAt": "2024-01-01T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Instructor",
+      "email": "instructor@example.com",
+      "password": "password123",
+      "role": "instructor",
+      "createdAt": "2024-01-01T10:00:00Z"
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "title": "JavaScript Basics",
+      "description": "Test your JavaScript knowledge",
+      "category": "Programming",
+      "duration": 30,
+      "passingScore": 70,
+      "totalQuestions": 10,
+      "instructor": "John Doe",
+      "createdAt": "2024-01-01T10:00:00Z",
+      "questions": [
+        {
+          "id": 1,
+          "text": "What is JavaScript?",
+          "options": [
+            "A programming language",
+            "A coffee brand",
+            "A type of script",
+            "A database"
+          ],
+          "correctAnswer": 0,
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}
+README.md:
+# ExamPro - Online Examination System
+
+A complete, ready-to-use exam website with user authentication, exam creation, and result tracking.
+
+## Features
+
+- 👤 User Authentication (Login/Register)
+- 📝 Multiple Exam Categories
+- ⏱️ Real-time Exam Timer
+- 📊 Instant Results with Analytics
+- 📱 Fully Responsive Design
+- 💾 Local Storage (No database needed initially)
+
+## Quick Start
+
+1. **Download all files** into a folder
+2. **Open `index.html`** in your browser
+3. **Register** a new account
+4. **Start taking exams!**
+
+## Default Login Credentials
+
+### Student Account:
+- Email: `student@example.com`
+- Password: `password123`
+
+### Instructor Account:
+- Email: `instructor@example.com`
+- Password: `password123`
+
+## File Structure
